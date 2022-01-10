@@ -1,0 +1,111 @@
+﻿@model IEnumerable<ProjetoFinal.Models.VendaDeArtesanatos>
+
+@{
+	ViewData["Title"] = "Venda de Artesanatos";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>Index</title>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/css/site.css" />
+	<!-- Font Awesome -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+	<!-- MDB -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.0/mdb.min.css" rel="stylesheet" />
+</head>
+
+<body>
+
+	<header class="header">
+		<div class="container-header">
+			<div class="container-fluid" id="startsection">
+				<nav class="container navbar fixed-top navbar-expand-lg navbar-light">
+					<div class="container-fluid">
+						<a class="navbar-brand" href="#"></a>
+						<button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+							data-mdb-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+							aria-label="Toggle navigation">
+							<i class="fas fa-bars"></i>
+						</button>
+						<div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+							<ul class="navbar-nav mb-2 mb-lg-0">
+								<li class="nav-item">
+									<a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" asp-area="" asp-controller="ProdutosDaMandiocultura"
+										asp-action="Index">Produtos da Mandiocultura</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" asp-area="" asp-controller="VendaDeArtesanatos"
+										asp-action="Index">Venda de Artesanatos</a>
+								</li>
+
+								<li class="nav-item">
+									<a class="nav-link" asp-area="" asp-controller="Contato"
+										asp-action="Contato">Contato</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</header>
+
+	<div class="container crud-container">
+
+		<h1>Venda de Artesanatos</h1>
+
+		<p>
+			<a asp-action="Create">Criar novo Produto</a>
+		</p>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>
+						Nome do Produto
+					</th>
+					<th>
+						Valor
+					</th>
+					<th>
+						Quantidade Produzida
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in Model)
+				{
+					<tr>
+						<td>
+							@Html.DisplayFor(modelItem => item.NomeDoProduto)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.Valor)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.QuantidadeProduzida)
+						</td>
+						<td>
+							<a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Editar</a> |
+							<a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Detalhes</a> |
+							<a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Deletar</a>
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+</body>
+
+</html>
+<!-- MDB -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.0/mdb.min.js">
+</script>

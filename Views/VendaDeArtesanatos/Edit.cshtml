@@ -1,0 +1,67 @@
+﻿@model ProjetoFinal.Models.VendaDeArtesanatos
+
+@{
+	ViewData["Title"] = "Editar";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>Index</title>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/css/site.css" />
+	<!-- Font Awesome -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;400;500&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+
+		<h1>Editar</h1>
+
+		<h4>Venda de Artesanatos</h4>
+		<hr />
+		<div class="row">
+			<div class="col-md-4">
+				<form asp-action="Edit">
+					<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+					<input type="hidden" asp-for="Id" />
+					<div class="form-group">
+						<label asp-for="NomeDoProduto" class="control-label">Nome do Produto</label>
+						<input asp-for="NomeDoProduto" class="form-control" />
+						<span asp-validation-for="NomeDoProduto" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="Valor" class="control-label">Valor</label>
+						<input asp-for="Valor" class="form-control" />
+						<span asp-validation-for="Valor" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="QuantidadeProduzida" class="control-label">Quantidade Produzida</label>
+						<input asp-for="QuantidadeProduzida" class="form-control" />
+						<span asp-validation-for="QuantidadeProduzida" class="text-danger"></span>
+					</div>
+					<br>
+					<div class="form-group">
+						<input type="submit" value="Salvar" class="btn btn-primary" />
+					</div>
+				</form>
+			</div>
+		</div>
+		<br>
+		<div>
+			<a asp-action="Index">Voltar</a>
+		</div>
+	</div>
+</body>
+</html>
+
+@section Scripts {
+    @{
+	await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}
